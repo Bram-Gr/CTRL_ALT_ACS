@@ -1,2 +1,5 @@
 myenv
 venv
+.vscode
+main.cpython-311.pyc
+__pycache__

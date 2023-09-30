@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
-import { Input, Button } from 'react-native-elements';
 import Logo from '../assets/images/logo.png';
 
 export default function LoginScreen() {

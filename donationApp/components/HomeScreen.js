@@ -59,7 +59,7 @@ export default function HomeScreen() {
 
     button: {
       backgroundColor: "#314D89",
-      borderRadius: 25,
+      borderRadius: 10,
       paddingVertical: 12,
       paddingHorizontal: 12,
       top: 58

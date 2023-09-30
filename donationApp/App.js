@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import HomeScreen from './components/HomeScreen';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -26,7 +27,7 @@ const analytics = getAnalytics(app);
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <HomeScreen/>
       <StatusBar style="auto" />
     </View>
   );

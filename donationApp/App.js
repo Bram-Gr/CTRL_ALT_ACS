@@ -5,6 +5,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import HomeScreen from './components/HomeScreen';
+import Login from './components/LoginScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,13 +26,27 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <HomeScreen/>
+
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="HomeScreen">
+        <Stack.Screen 
+          name="HomeScreen" 
+          component={HomeScreen} 
+          options={{ title: 'Home Screen' }} // Optional: Adjust title or other screen options as needed
+        />
+        <Stack.Screen 
+          name="Login" 
+          component={Login} 
+          options={{ title: 'Login Screen' }} // Optional: Adjust title or other screen options as needed
+        />
+      </Stack.Navigator>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
+    
   );
 }
 

@@ -1,1 +1,1 @@
-psql -U your_username -d your_database -a -f create.sql
+psql -U your_username -d habitat -a -f create.sql

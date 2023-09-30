@@ -1,92 +1,118 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Logo from '../assets/images/logo.png'
+import { StatusBar } from "expo-status-bar";
+import {
+  Button,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import Logo from "../assets/images/logo.png";
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function HomeScreen() {
-    return (
-      <View style={styles.container}>
-        <View style={{position: "absolute", top: 108}}>
-            <Text style={styles.welcomeText}>Welcome!</Text>
-            <Image style={styles.logo} source={Logo}/>
-        </View>
-        <View style={{top: 215, position: 'relative'}}>
-            <Text style={styles.joinText}>Join our community of givers and make a difference today!</Text>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Let's Get Started</Text>
-            </TouchableOpacity>
-        </View>
-        <View style={{borderColor: "black", borderWidth: 1, width: 332, position: "relative", top: 300}}/>
-        <Text style={styles.accountText}>Already have an account? <TouchableOpacity><Text style={styles.loginText}>Log In</Text></TouchableOpacity></Text>
-        <StatusBar style="auto" />
+  const navigation = useNavigation();
+
+  return (
+    <View style={styles.container}>
+      <View style={{ position: "absolute", top: 108 }}>
+        <Text style={styles.welcomeText}>Welcome!</Text>
+        <Image style={styles.logo} source={Logo} />
       </View>
-    );
-  }
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+      <View style={{ top: 215, position: "relative" }}>
+        <Text style={styles.joinText}>
+          Join our community of givers and make a difference today!
+        </Text>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Let's Get Started</Text>
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          borderColor: "black",
+          borderWidth: 1,
+          width: 332,
+          position: "relative",
+          top: 300,
+        }}
+      />
+      <Text style={styles.accountText}>
+        Already have an account?{" "}
+        <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
+          <Text style={styles.loginText}>Log In</Text>
+        </TouchableOpacity>
+      </Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
 
-    logo: {
-      width: 281,
-      height: 217,
-      top: 73
-    },
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-    welcomeText: {
-      color: "#314D89",
-      textAlign: "center",
-      fontFamily: "Roboto Slab",
-      fontSize: 45,
-      fontStyle: "normal",
-      fontWeight: 300,
-      lineHeight: 122.49 /* 55.121px */,
-    },
+  logo: {
+    width: 281,
+    height: 217,
+    top: 73,
+  },
 
-    joinText:{
-      width: 322,
-      fontFamily: "Roboto",
-      fontSize: 18,
-      fontWeight: "400",
-      fontStyle: "normal",
-      textAlign: "center",
-      color: "#314D89",
-      lineHeight: 30
-    },
+  welcomeText: {
+    color: "#314D89",
+    textAlign: "center",
+    fontFamily: "Roboto Slab",
+    fontSize: 45,
+    fontStyle: "normal",
+    fontWeight: 300,
+    lineHeight: 122.49 /* 55.121px */,
+  },
 
-    button: {
-      backgroundColor: "#314D89",
-      borderRadius: 10,
-      paddingVertical: 12,
-      paddingHorizontal: 12,
-      top: 58
-    },
+  joinText: {
+    width: 322,
+    fontFamily: "Roboto",
+    fontSize: 18,
+    fontWeight: "400",
+    fontStyle: "normal",
+    textAlign: "center",
+    color: "#314D89",
+    lineHeight: 30,
+  },
 
-    buttonText: {
-      fontFamily: "Roboto Slab",
-      fontSize: 20,
-      fontWeight: "400",
-      fontStyle: "normal",
-      lineHeight: 20,
-      color: "#FFFFFF",
-      textAlign: "center"
-    },
+  button: {
+    backgroundColor: "#314D89",
+    borderRadius: 25,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    top: 58,
+  },
 
-    accountText: {
-      color: "#314D89",
-      textAlign: "center",
-      fontFamily: "Roboto",
-      fontSize: 16,
-      fontWeight: 400,
-      top: 325
-    },
+  buttonText: {
+    fontFamily: "Roboto Slab",
+    fontSize: 20,
+    fontWeight: "400",
+    fontStyle: "normal",
+    lineHeight: 20,
+    color: "#FFFFFF",
+    textAlign: "center",
+  },
 
-    loginText: {
-      color: "black",
-      fontWeight: "bold",
-      top: 3
-    }
-  });
+  accountText: {
+    color: "#314D89",
+    textAlign: "center",
+    fontFamily: "Roboto",
+    fontSize: 16,
+    fontWeight: 400,
+    top: 325,
+  },
+
+  loginText: {
+    color: "black",
+    fontWeight: "bold",
+    top: 3,
+  },
+});

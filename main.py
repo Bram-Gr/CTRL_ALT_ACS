@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import pydantic
-from src.models import makeADonation, changeDonationStatus, registerUser, getUsers
+from src.models.models import makeADonation, changeDonationStatus, registerUser, getUsers, generate_serialized_id, registerManager, getDonations
 
 app = FastAPI()
 
@@ -16,20 +16,18 @@ app = FastAPI()
 class User(pydantic.BaseModel):
     username: str
     password: str
-
+    # userId: int | None
+  
+class Manager(pydantic.BaseModel):
+    username: str
+    password: str
 
 class Donation(pydantic.BaseModel):
+    userId: int
     description: str
     image: str
-    status: str
+   
 
-
-@app.post("/donations/{user_id}")
-def createDonations(user_id: int, donation: Donation):
-    """   # summary = "Create a donation",
-    # description = "make a donation by user_id","""
-    makeADonation(user_id, donation)
-    return {"user_id": user_id}
 
 
 @app.put("/status/{manager_id}")
@@ -38,12 +36,6 @@ def updateDonationStatus(manager_id: int, donation: Donation):
     return {"manager_id": manager_id}
 
 
-@app.get("/donations")
-def getDonationsList(description, image):
-    response_model = description, image,
-    summary = "show all the donations",
-    description = "get list of all dontations"
-    return {""}
 
 
 @app.get("/users")
@@ -53,14 +45,22 @@ def getAllUsers():
 
 @app.post("/user")
 def createUser(user: User):
-    print(f"this is my user {User}")
-    registerUser(user.username, user.password)
+    registerUser(user.username, user.password, generate_serialized_id("users"))
     return {"return":"return"}
 
 
 @app.post("/manager")
-def createManager(user: User):
-    response_model = {"username": user.username, "password": user.password},
-    summary = "Create a manager",
-    description = "submit a user to add to the database",
-    return ""
+def createManager(manager: Manager):
+   registerManager(manager.username, manager.password, generate_serialized_id("managers"))
+   return {"return":"return"}
+
+@app.post("/donations")
+def createDonations(donation: Donation):
+    makeADonation(donation.userId, generate_serialized_id("donations"), donation.description, donation.image)
+    return {"user_id"}
+
+
+@app.get("/all-donations/{donationId}")
+def getDonationsList(donationId):
+    return getDonations(donationId)
+    

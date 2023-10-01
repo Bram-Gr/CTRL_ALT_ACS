@@ -26,15 +26,15 @@ def read_sql_query(sql_path: pathlib.Path) -> str:
 init_db = read_sql_query(init_path)
 
 # # Populate db if it does not exist
-with sqlite3.connect(db_path) as connn:
+with sqlite3.connect(db_path, check_same_thread=False) as connn:
     cursor = connn.cursor()
     cursor.executescript(init_db)
     connn.commit()
 
-def makeADonation(description, image):
+def makeADonation(donationId, description, image, userId):
     with sqlite3.connect(db_path) as connn:
         cursor = connn.cursor()
-        cursor.execute("INSERT INTO donations VALUES (?,?)", (description, image))
+        cursor.execute("INSERT INTO donations VALUES (?,?,?,?)", (description, image, donationId, userId))
         connn.commit()
 
 def changeDonationStatus(status, donationId):
@@ -43,11 +43,24 @@ def changeDonationStatus(status, donationId):
         cursor.execute("UPDATE table donations_status VALUES (?) WHERE donation_id =?", (status, donationId))
         connn.commit()
 
+def generate_serialized_id(table):
+    cursor.execute(f'SELECT COUNT(*) FROM {table}')
+    count = cursor.fetchone()[0] + 1  # Get the current count and increment it
+    serialized_id = count  # Create a serialized ID with a prefix and zero-padded integer
+    return int(serialized_id)
 
-def registerUser(username, password):
+def registerUser(username, password, userId):
     with sqlite3.connect(db_path) as connn:
         cursor = connn.cursor()
-        cursor.execute("INSERT INTO users VALUES (?,?)", (username, password))
+        print(f"{username, password}")
+        cursor.execute("INSERT INTO users VALUES (?,?,?)", (username, password, userId))
+        connn.commit()
+
+def registerManager(username, password, managerId):
+    with sqlite3.connect(db_path) as connn:
+        cursor = connn.cursor()
+        print(f"{username, password}")
+        cursor.execute("INSERT INTO users VALUES (?,?,?)", (username, password, managerId))
         connn.commit()
 
 def getUsers():
@@ -55,6 +68,14 @@ def getUsers():
     with sqlite3.connect(db_path) as connn:
         cursor = connn.cursor()
         cursor.execute("SELECT * FROM users")
+        result = cursor.fetchall()
+    return result
+    
+def getDonations(donationId):
+    result = ''
+    with sqlite3.connect(db_path) as connn:
+        cursor = connn.cursor()
+        cursor.execute("SELECT * FROM donations WHERE donation_id = ?", donationId)
         result = cursor.fetchall()
     return result
     

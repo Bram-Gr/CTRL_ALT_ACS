@@ -38,17 +38,18 @@ export default function CameraScreen() {
         setImage(data.base64);
 
         sendUserData();
-        navigation.navigate(LoadingScreen);
     }
   }
 
-  const sendUserData = async (userData) => {
+  const sendUserData = async () => {
     try {
         let object = {
             userId: getRandomInt(0,1000),
             description: "couch",
             image: image
         }
+
+        if (object !== null) {
 
         setImageObj(object);
 
@@ -59,6 +60,15 @@ export default function CameraScreen() {
             },
         });
         console.log("Data sent successfully: ", response.data);
+
+        if (response.data.true) {
+          navigation.navigate(LoadingScreen);
+        } else {
+          navigation.navigate(UploadScreen);
+        }
+      } else {
+        sendUserData();
+      }
     } catch (error) {
         console.error("Error Sending data:", error);
     }

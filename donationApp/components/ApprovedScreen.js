@@ -73,7 +73,7 @@ export default function ApprovedScreen() {
                                     value={location}
                                     onChangeText={setLocation}
                                 />
-                                <TouchableOpacity   onPress={() => setModalVisible(false)}>
+                                <TouchableOpacity xonPress={() => setModalVisible(false)}>
                                     <Image style={[styles.locationBttn, {left: -33, bottom: -11}]} source={LocationBttn}/>
                                 </TouchableOpacity>
                             </View>
@@ -84,7 +84,7 @@ export default function ApprovedScreen() {
                                 value={distance}
                                 onChangeText={setDistance}
                             /> */}
-                            <View style={{width: '292px', zIndex: 100, borderWidth: 0}}>
+                            <View style={{width: '292px', zIndex: 100, borderWidth: 0, top: 60}}>
                                 <DropDownPicker
                                     containerStyle={{
                                         border: 'none'
@@ -101,7 +101,7 @@ export default function ApprovedScreen() {
                                     setItems={setItems}
                                 />
                             </View>
-                            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('UploadScreen')}>
+                            <TouchableOpacity style={[styles.button, {left: 0, top: 100}]} onPress={() => navigation.navigate('UploadScreen')}>
                                 <Text style={styles.buttonText} >Find Location</Text>
                             </TouchableOpacity>
                         </View>
@@ -179,7 +179,8 @@ export default function ApprovedScreen() {
     },
 
     locationContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        top: 30
     },
 
     locationBttn: {
@@ -201,7 +202,7 @@ export default function ApprovedScreen() {
       backgroundColor: "#F5F5F5",
       fontFamily: "Roboto",
       paddingLeft: 10,
-      fontSize: 16,
+      fontSize: 14,
       marginBottom: '1rem'
     },
 

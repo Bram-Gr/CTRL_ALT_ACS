@@ -48,6 +48,44 @@ def get_detection(image: pathlib.Path | str) -> str:
     return highest_confidence_detection
 
 
+def is_furniture(image: pathlib.Path | str, user_choice) -> (bool, str):
+    """Returns whether the image is furniture or not.
+
+    Args:
+        image (pathlib.Path | str): Path to the image.
+        user_choice (str): The user's choice.
+
+    Returns:
+        bool: True if the image is furniture, False otherwise.
+    """
+
+    furniture_types = [
+        "chair",
+        "couch",
+        "table",
+        "desk",
+        "lamp",
+        "bed",
+        "bench",
+        "stool",
+        "sofa",
+        "furniture",
+        "furnishing",
+        "cabinet",
+        "shelf",
+        "cupboard",
+        "dresser",
+        "drawer",
+    ]
+
+    result = get_detection(image)
+
+    if result in furniture_types and user_choice in furniture_types:
+        return (True, result)
+
+    return (False, result)
+
+
 def main():
 
     # image_path = ROOT / "static/img/green_couch.png"

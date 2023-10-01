@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import shutil
 import pydantic
 import base64
-import os
+from typing import Any
 from src.models.models import makeADonation
 from src.models.models import changeDonationStatus
 from src.models.models import registerUser
@@ -28,13 +28,21 @@ class Donation(pydantic.BaseModel):
     userId: int
     description: str
     image: bytes
-    # userChoice: str
+
+
+class Optionals(pydantic.BaseModel):
+    extra: dict[str, Any]
 
 
 @app.put("/status/{manager_id}")
 def updateDonationStatus(manager_id: int, donation: Donation):
     changeDonationStatus(manager_id, donation.status)
     return {"manager_id": manager_id}
+
+
+@app.options("/user")
+def notImplemented(payload: Optionals):
+    print(f"Payload: {payload}")
 
 
 @app.get("/users")
@@ -68,9 +76,6 @@ def createDonations(donation: Donation):
     shutil.copyfile(image, "temp2.jpg")
 
     result: tuple[bool, str] = is_furniture(image, "couch")
-
-    # Delete the image
-    os.remove(image)
 
     print(f"Is furniture: {result[0]}")
     print(f"Result: {result[1]}")

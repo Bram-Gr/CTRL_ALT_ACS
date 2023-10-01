@@ -12,7 +12,7 @@ def detect(config, weights, image):
 def main():
 
     ROOT = pathlib.Path(__file__).parent.parent.parent.absolute()
-    config = str(ROOT / 'cfg/yolov3.cfg')
+    config = str(ROOT / "static/assets/darknet/cfg/yolov3.cfg")
     # weights = 'yolov3.weights'
     # image = 'data/dog.jpg'
     # print(detect(config, weights, image))

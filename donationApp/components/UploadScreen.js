@@ -12,13 +12,13 @@ export default function UploadScreen() {
         let greeting = "";
         setHour(time);
 
-        if (hour >= "22" && hour <= "06") {
+        if (hour >= "22" || hour <= "6") {
             greeting = "Night";
-        } else if (hour >= "06" && hour <= "12") {
+        } else if (hour >= "6" && hour < "12") {
             greeting = "Morning";
-        } else if (hour >= "12" && hour <= "18") {
+        } else if (hour >= "12" && hour < "18") {
             greeting = "Afternoon";
-        } else if (hour >= "18" && hour <= "22") {
+        } else if (hour >= "18" && hour < "22") {
             greeting = "Evening";
         } else {
             greeting = "Day";

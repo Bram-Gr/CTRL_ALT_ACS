@@ -28,9 +28,10 @@ export default function LoginScreen() {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         const userData = {
-          username: user.displayName, // Assuming you have displayName
-          password: user.email, // This should not be sent like this
+          displayName: "Nadia", // Assuming you have displayName
+          email: user.email, // This should not be sent like this
         };
+        console.log(userData);
         sendUserData(userData);
       } else {
         console.log("User is not signed in");
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
     width: 176,
     height: 136,
     position: "absolute",
-    top: 150,
+    top: 100,
   },
 
   inputField: {
@@ -132,6 +133,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     top: 58,
     width: 292,
+    marginVertical: 15
   },
 
   buttonText: {

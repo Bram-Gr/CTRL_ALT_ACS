@@ -18,6 +18,7 @@ import SignUpScreen from './components/SignUpScreen';
 import ApprovedScreen from './components/ApprovedScreen';
 import LoadingScreen from './components/LoadingScreen';
 import MapScreen from './components/MapScreen';
+import DeniedScreen from './components/DeniedScreen';
 
 const firebaseConfig = {
   apiKey: "AIzaSyD_RB0NmhSvprCJK9OM7N0Rxew3yGX_HsQ",
@@ -70,6 +71,10 @@ export default function App() {
         <Stack.Screen
           name="MapScreen"
           component={MapScreen}
+        />
+        <Stack.Screen
+          name="DeniedScreen"
+          component={DeniedScreen}
         />
       </Stack.Navigator>
       <StatusBar style="dark" />

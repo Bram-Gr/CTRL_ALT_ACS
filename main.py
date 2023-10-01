@@ -47,7 +47,6 @@ def getAllUsers():
 def createManager(manager: Manager):
     registerManager(manager.username, manager.password,
                     generate_serialized_id("managers"))
-    return {"return": "return"}
 
 
 @app.post("/user")
@@ -85,5 +84,4 @@ def createDonations(donation: Donation):
 
 @app.get("/get-donations/{donationId}")
 def getDonationsList(donationId):
-    print(f"{donationId}")
     return getDonations(donationId)

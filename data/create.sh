@@ -1,1 +1,0 @@
-psql -U your_username -d habitat -a -f create.sql

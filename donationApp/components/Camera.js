@@ -4,6 +4,7 @@ import { Camera } from 'expo-camera';
 import { useNavigation } from '@react-navigation/native';
 import UploadScreen from './UploadScreen';
 import axios from "axios";
+import LoadingScreen from './LoadingScreen';
 
 export default function CameraScreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -26,17 +27,18 @@ export default function CameraScreen() {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
   }
-  
 
   const takePicture = async () => {
     if(camera){
+
         const data = await camera.takePictureAsync(({
             base64: true
         }));
-
+        
         setImage(data.base64);
 
         sendUserData();
+        navigation.navigate(LoadingScreen);
     }
   }
 
@@ -92,9 +94,9 @@ export default function CameraScreen() {
         <Text style={styles.buttonText}>Take Picture</Text>
         {image && <Image source={{uri: image}} style={{flex:1}}/>}
         </TouchableOpacity><TouchableOpacity 
-            style={[styles.button, {top: -50, left: 140, backgroundColor: "green"}]}
+            style={[styles.button, {top: -50, left: 90, backgroundColor: "green", width: 250}]}
             onPress={() => navigation.navigate(UploadScreen)}>
-        <Text style={styles.buttonText}>Done</Text>
+        <Text style={styles.buttonText}>Back</Text>
         {image && <Image source={{uri: image}} style={{flex:1}}/>}
         </TouchableOpacity>
    </View>
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
   },
   fixedRatio:{
       flex: 1,
-      aspectRatio: 1
+      aspectRatio: 0.75,
   },
   button: {
     backgroundColor: "#314D89",

@@ -25,7 +25,7 @@ class Manager(pydantic.BaseModel):
 class Donation(pydantic.BaseModel):
     userId: int
     description: str
-    image: str
+    image: bytes
    
 
 

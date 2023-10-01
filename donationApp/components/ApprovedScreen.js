@@ -101,8 +101,8 @@ export default function ApprovedScreen() {
                                     setItems={setItems}
                                 />
                             </View>
-                            <TouchableOpacity style={[styles.button, {left: 0, top: 100}]} onPress={() => navigation.navigate('UploadScreen')}>
-                                <Text style={styles.buttonText} >Find Location</Text>
+                            <TouchableOpacity style={[styles.button, {left: 0, top: 100}]} onPress={() => navigation.navigate('MapScreen')}>
+                                <Text style={styles.buttonText}>Find Location</Text>
                             </TouchableOpacity>
                         </View>
                         

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS managers (
 );
 
 CREATE TABLE IF NOT EXISTS donations (
-    donation_id SERIAL PRIMARY KEY,
+    donation_id INTEGER PRIMARY KEY,
     description VARCHAR(250),
     image BYTEA NOT NULL,
     user_id INTEGER,

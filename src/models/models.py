@@ -75,7 +75,7 @@ def getDonations(donationId):
     result = ''
     with sqlite3.connect(db_path) as connn:
         cursor = connn.cursor()
-        cursor.execute("SELECT * FROM donations WHERE donation_id = ?", donationId)
-        result = cursor.fetchall()
+        cursor.execute("SELECT * FROM donations WHERE donation_id = ?", (donationId,))
+        result = cursor.fetchone()
     return result
     

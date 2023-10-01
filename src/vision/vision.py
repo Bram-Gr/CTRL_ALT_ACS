@@ -28,7 +28,11 @@ def get_detection(image: pathlib.Path | str) -> str:
         max_results=15,
         running_mode=VisionRunningMode.IMAGE)
 
-    mp_img = mp.Image.create_from_file(str(image))
+    try:
+        mp_img = mp.Image.create_from_file(str(image))
+    except RuntimeError as err:
+        # Return the line number of the error
+        return err.__traceback__.tb_lineno
 
     results = None
     with ObjectDetector.create_from_options(options) as detector:

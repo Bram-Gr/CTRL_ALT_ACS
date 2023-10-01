@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {getAuth,createUserWithEmailAndPassword} from 'firebase/auth';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -25,8 +26,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const  auth = getAuth(app)
 const analytics = getAnalytics(app);
 const Stack = createStackNavigator();
+
+
+//Sign-up
+
 
 export default function App() {
   return (

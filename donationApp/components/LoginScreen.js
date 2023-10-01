@@ -3,6 +3,15 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { MaterialIcons } from '@expo/vector-icons';
 
+const signUp = async (email, password) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      console.log('User signed up successfully!');
+    } catch (error) {
+      console.error('Error signing up: ', error);
+    }
+  };
+
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

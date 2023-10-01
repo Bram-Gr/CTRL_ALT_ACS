@@ -6,7 +6,8 @@ import {getAuth,createUserWithEmailAndPassword} from 'firebase/auth';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import HomeScreen from './components/HomeScreen';
-import Login from './components/LoginScreen'
+import LoginScreen from './components/LoginScreen';
+import UploadScreen from './components/UploadScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -46,7 +47,7 @@ export default function App() {
         />
         <Stack.Screen 
           name="Login" 
-          component={Login} 
+          component={LoginScreen} 
           options={{ title: 'Login Screen' }} // Optional: Adjust title or other screen options as needed
         />
       </Stack.Navigator>

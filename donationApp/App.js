@@ -26,13 +26,15 @@ export default function App() {
       <Stack.Navigator initialRouteName="HomeScreen">
         <Stack.Screen 
           name="HomeScreen" 
-          component={HomeScreen} 
-          options={{ title: 'Home Screen' }} // Optional: Adjust title or other screen options as needed
+          component={HomeScreen}
         />
         <Stack.Screen 
-          name="Login" 
-          component={LoginScreen} 
-          options={{ title: 'Login Screen' }} // Optional: Adjust title or other screen options as needed
+          name="LoginScreen" 
+          component={LoginScreen}
+        />
+        <Stack.Screen
+          name="UploadScreen"
+          component={UploadScreen}
         />
       </Stack.Navigator>
       <StatusBar style="auto" />

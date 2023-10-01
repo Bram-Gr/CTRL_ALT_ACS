@@ -8,14 +8,14 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import LoadingImage from "../assets/images/ferris-wheel-spinner.gif";
 import { useEffect } from "react";
-import ApprovedScreen from "./ApprovedScreen";
+import DeniedScreen from "./DeniedScreen";
 
 
 export default function LoadingScreen() {
   const navigation = useNavigation();
 
   useEffect (() => {
-    setTimeout(() => navigation.navigate(ApprovedScreen), 6000);
+    setTimeout(() => navigation.navigate(DeniedScreen), 6000);
   }, [])
 
   return (

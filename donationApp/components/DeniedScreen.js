@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TextInput, Modal, TouchableOpacity } from 'react-native';
-import Approved from '../assets/images/approved.png';
+import Denied from '../assets/images/denied.png';
 import CloseBttn from '../assets/images/closeBttn.png';
 import LocationBttn from '../assets/images/locationBttn.png';
 
 
 import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from 'react-native-dropdown-picker';
+import UploadScreen from './UploadScreen';
 
 
 export default function DeniedScreen() {
@@ -40,16 +41,16 @@ export default function DeniedScreen() {
 
     return (
       <View style={styles.container}>
-        <Image style={styles.approved} source={Approved}/>
+        <Image style={styles.approved} source={Denied}/>
         <View style={{ top: 10, position: "relative" }}>
             <Text style={styles.titleText}>
-                Submission Approved!
+                Submission Denied!
             </Text>
             <Text style={styles.bodyText}>
-                Your donation submission has been approved! Please proceed to drop-off your donation at our nearest store
+                Your donation submission has been denied! Please consider dropping off your donation at local charity.
             </Text>
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => setModalVisible(true)}>Next</Text>
+                <Text style={styles.buttonText} onPress={() => navigation.navigate(UploadScreen)}>Find Community Partners!</Text>
             </TouchableOpacity>
             <Modal
                 animationType="slide"
@@ -97,7 +98,7 @@ export default function DeniedScreen() {
                                     value={value}
                                     items={items}
                                     setOpen={setOpen}
-                                    setDistance={distance}
+                                    setValue={setValue}
                                     setItems={setItems}
                                 />
                             </View>
@@ -171,6 +172,7 @@ export default function DeniedScreen() {
         textAlign: "center",
         color: "#314D89",
         lineHeight: 30,
+        paddingBottom: 30
     },
 
     closeBttn: {
@@ -189,7 +191,7 @@ export default function DeniedScreen() {
     },
 
     approved: {
-      width: 176,
+      width: 250,
       height: 164,
       position: 'absolute',
       top: 160

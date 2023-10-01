@@ -97,7 +97,7 @@ export default function ApprovedScreen() {
                                     value={value}
                                     items={items}
                                     setOpen={setOpen}
-                                    setDistance={distance}
+                                    setValue={setValue}
                                     setItems={setItems}
                                 />
                             </View>

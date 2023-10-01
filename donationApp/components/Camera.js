@@ -63,11 +63,9 @@ export default function CameraScreen() {
         });
         console.log("Data sent successfully: ", response.data);
 
-        if (response.data["true"]) {
-          console.log("HERE");
+        if (response.data["false"]) {
           navigation.navigate(LoadingScreen);
         } else {
-          navigation.navigate(DeniedScreen);
         }
       } else {
       }

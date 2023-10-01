@@ -42,7 +42,7 @@ export default function Donation() {
         let today = getCurrentDate();
         setDeliveryDate(today);
     }
-  })
+  }, [])
 
   const getCurrentDate = () => {
     let today = new Date();
@@ -56,7 +56,6 @@ export default function Donation() {
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
-        <Image style={{borderWidth: 2, width: 115, height: 115, top: 15, left: 20}} source={{uri: (ifImage ? imageUrl : "https://placehold.co/100")}}/>
         <Text style={styles.cardText}>Woman On A Mission Outreach Center</Text>
         <Text style={styles.cardDate}>Expected Delivery:</Text>
         <Text style={[styles.cardDate, {top: 90}]}>{deliveryDate}</Text>

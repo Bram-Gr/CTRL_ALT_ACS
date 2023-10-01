@@ -43,24 +43,27 @@ def getAllUsers():
     return getUsers()
 
 
+@app.post("/manager")
+def createManager(manager: Manager):
+   registerManager(manager.username, manager.password, generate_serialized_id("managers"))
+   return {"return":"return"}
+
+
+
 @app.post("/user")
 def createUser(user: User):
     registerUser(user.username, user.password, generate_serialized_id("users"))
     return {"return":"return"}
 
 
-@app.post("/manager")
-def createManager(manager: Manager):
-   registerManager(manager.username, manager.password, generate_serialized_id("managers"))
-   return {"return":"return"}
-
 @app.post("/donations")
 def createDonations(donation: Donation):
     makeADonation(donation.userId, generate_serialized_id("donations"), donation.description, donation.image)
-    return {"user_id"}
+    return ""
 
 
-@app.get("/all-donations/{donationId}")
+@app.get("/get-donations/{donationId}")
 def getDonationsList(donationId):
+    print(f"{donationId}")
     return getDonations(donationId)
     

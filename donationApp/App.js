@@ -14,6 +14,9 @@ const Stack = createStackNavigator();
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import SignUpScreen from './components/SignUpScreen';
+import ApprovedScreen from './components/ApprovedScreen';
+import LoadingScreen from './components/LoadingScreen';
 
 const firebaseConfig = {
   apiKey: "AIzaSyD_RB0NmhSvprCJK9OM7N0Rxew3yGX_HsQ",
@@ -34,7 +37,7 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen">
+      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="HomeScreen">
         <Stack.Screen 
           name="HomeScreen" 
           component={HomeScreen}
@@ -44,6 +47,10 @@ export default function App() {
           component={LoginScreen}
         />
         <Stack.Screen
+          name="SignUpScreen"
+          component={SignUpScreen}
+        />
+        <Stack.Screen
           name="UploadScreen"
           component={UploadScreen}
         />
@@ -51,8 +58,16 @@ export default function App() {
           name="CameraScreen"
           component={CameraScreen}
         />
+        <Stack.Screen
+          name="ApprovedScreen"
+          component={ApprovedScreen}
+        />
+        <Stack.Screen
+          name="LoadingScreen"
+          component={LoadingScreen}
+        />
       </Stack.Navigator>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </NavigationContainer>
     
   );

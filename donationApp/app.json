@@ -15,13 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "host.exp.exponent"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "host.exp.exponent"
     },
     "web": {
       "favicon": "./assets/logo.png"
@@ -30,6 +32,9 @@
       "eas": {
         "projectId": "2fc90d61-4957-4154-9ca1-e146d8345be6"
       }
-    }
+    },
+    "plugins": [
+      "react-native-compressor"
+    ]
   }
 }

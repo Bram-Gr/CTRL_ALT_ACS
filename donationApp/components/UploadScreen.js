@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import Donation from './Donation';
 
 export default function UploadScreen() {
 
@@ -54,6 +55,7 @@ export default function UploadScreen() {
                 </TouchableOpacity>
                 <View style={{top: 225}}>
                   <Text style={styles.donationText}>Donations</Text>
+                  <Donation/>
                   <FlatList/>
                 </View>
             </View>

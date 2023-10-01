@@ -7,6 +7,7 @@ import { getAnalytics } from "firebase/analytics";
 import HomeScreen from './components/HomeScreen';
 import LoginScreen from './components/LoginScreen';
 import UploadScreen from './components/UploadScreen';
+import CameraScreen from './components/Camera';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -45,6 +46,10 @@ export default function App() {
         <Stack.Screen
           name="UploadScreen"
           component={UploadScreen}
+        />
+        <Stack.Screen
+          name="CameraScreen"
+          component={CameraScreen}
         />
       </Stack.Navigator>
       <StatusBar style="auto" />

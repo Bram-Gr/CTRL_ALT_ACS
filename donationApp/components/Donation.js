@@ -50,7 +50,8 @@ export default function Donation() {
     let day = today.getDay();
     let year = today.getFullYear();
     return monthMap[month] + ' ' + day + ', ' + year;
-}
+    
+  }
 
   return (
     <View style={styles.container}>
@@ -61,7 +62,7 @@ export default function Donation() {
         <Text style={[styles.cardDate, {top: 90}]}>{deliveryDate}</Text>
         <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Approved</Text></TouchableOpacity>
         <TouchableOpacity style={[styles.button, {top: -25, left: 260}]}><Text style={styles.buttonText}>Scheduled</Text></TouchableOpacity>
-        {/* <Arrow/> */}
+        <TouchableOpacity><Arrow style={{top: -115, left: 340}}/></TouchableOpacity>
       </View>
       <StatusBar style="auto" />
     </View>

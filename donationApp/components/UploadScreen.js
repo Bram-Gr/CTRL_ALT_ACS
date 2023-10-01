@@ -1,11 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Donation from './Donation';
+import { Camera, CameraType } from 'expo-camera';
+import { useNavigation } from '@react-navigation/native';
+import CameraScreen from './Camera';
 
 export default function UploadScreen() {
 
     const [greeting, setGreeting] = useState("Morning");
     const [hour, setHour] = useState(null);
+    const [hasCameraPermission, setHasCameraPermission] = useState(null);
+    const [camera, setCamera] = useState(null);
+    const [image, setImage] = useState(null);
+    const [type, setType] = useState(Camera.Constants.Type.back);
+
+    const navigation = useNavigation();
+    
+    useEffect(() => {
+        (async () => {
+          const cameraStatus = await Camera.requestCameraPermissionsAsync();
+          setHasCameraPermission(cameraStatus.status === 'granted');
+    })();
+    }, []);
 
     useEffect(() => {
         let time = getCurrentTime();
@@ -33,6 +49,10 @@ export default function UploadScreen() {
         return hours;
     }
 
+    function toggleCameraType() {
+      setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
+    }
+
     return (
       <View style={styles.container}>
         <View style={{position: "absolute", top: 50, left: 25}}>
@@ -50,9 +70,9 @@ export default function UploadScreen() {
                 <View style={{width: 280, top: 80, left: 50}}>
                   <Text style={styles.uploadText}>Check if your furniture qualifies for donation!</Text>
                 </View>
-                <TouchableOpacity style={[styles.button, {top: 115, left: 40}]}>
-                  <Text style={styles.buttonText}>Upload Photo</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity style={[styles.button, {top: 115, left: 40}]} onPress={() => navigation.navigate(CameraScreen)}>
+                    <Text style={styles.buttonText}>Upload Photo</Text>
+                  </TouchableOpacity>
                 <View style={{top: 225}}>
                   <Text style={styles.donationText}>Donations</Text>
                   <Donation/>

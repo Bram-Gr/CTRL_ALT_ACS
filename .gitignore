@@ -1,6 +1,4 @@
 myenv
-<<<<<<< HEAD
-=======
 venv
 __pycache__
 *.pyc
@@ -8,4 +6,5 @@ __pycache__
 main.cpython-311.pyc
 temp2.jpg
 *.db
->>>>>>> 802358a646e69e5b664f2f1825b8dc8bfa5ad758
+temp.jpg
+__pycache__

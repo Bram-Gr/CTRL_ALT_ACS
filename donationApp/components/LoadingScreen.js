@@ -15,10 +15,8 @@ export default function LoadingScreen() {
   const navigation = useNavigation();
 
   useEffect (() => {
-    
+    setTimeout(() => navigation.navigate(ApprovedScreen), 6000);
   }, [])
-
-  setTimeout(() => navigation.navigate(ApprovedScreen), 6000);
 
   return (
     <View style={styles.container}>

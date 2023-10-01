@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet ,Text, View, Button, Image, TouchableOpacity} from 'react-native';
 import { Camera } from 'expo-camera';
 import { useNavigation } from '@react-navigation/native';
 import UploadScreen from './UploadScreen';
 import axios from "axios";
 import LoadingScreen from './LoadingScreen';
+import DeniedScreen from './DeniedScreen';
 
 export default function CameraScreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
-  const [imageObj, setImageObj] = useState({});
+  const [imageObj, setImageObj] = useState({userId: 0, description: "", image: ""});
   const [type, setType] = useState(Camera.Constants.Type.back);
   const navigation = useNavigation();
 
@@ -20,7 +21,8 @@ export default function CameraScreen() {
       setHasCameraPermission(cameraStatus.status === 'granted');
 
     })();
-  }, []);
+
+  }, [image]);
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -30,25 +32,26 @@ export default function CameraScreen() {
 
   const takePicture = async () => {
     if(camera){
-
         const data = await camera.takePictureAsync(({
             base64: true
         }));
         
         setImage(data.base64);
 
-        sendUserData();
-        navigation.navigate(LoadingScreen);
+        let temp = await sendUserData();
     }
   }
 
-  const sendUserData = async (userData) => {
+  const sendUserData = async () => {
     try {
+
         let object = {
             userId: getRandomInt(0,1000),
             description: "couch",
             image: image
         }
+
+        if (object) {
 
         setImageObj(object);
 
@@ -59,6 +62,15 @@ export default function CameraScreen() {
             },
         });
         console.log("Data sent successfully: ", response.data);
+
+        if (response.data["true"]) {
+          console.log("HERE");
+          navigation.navigate(LoadingScreen);
+        } else {
+          navigation.navigate(DeniedScreen);
+        }
+      } else {
+      }
     } catch (error) {
         console.error("Error Sending data:", error);
     }

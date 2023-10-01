@@ -34,8 +34,35 @@ for detection in results:
     result_types.update({str(detection.__dict__['categories'][0].score):
                          detection.__dict__['categories'][0].category_name})
 
-# Filter the results to only include the highest confidence detections.
-highest_confidence_detection = max(results, key=lambda x: x.keys())
+
+# Filter the results to only include the highest confidence detections key and value.
+highest_confidence_detection = result_types[max(result_types.keys())]
 
 
-print(f"Detection class name: {highest_confidence_detection}")
+def get_detection(image: pathlib.Path | str) -> str:
+    """Returns the highest confidence detection from the image.
+
+    Args:
+        image (pathlib.Path | str): Path to the image.
+
+    Returns:
+        str: The highest confidence detection.
+    """
+    mp_img = mp.Image.create_from_file(str(image))
+
+    results = None
+    with ObjectDetector.create_from_options(options) as detector:
+        results = detector.detect(mp_img).detections
+
+    result_types = {}
+
+    for detection in results:
+        print(f"{detection.__dict__['categories'][0].score} - "
+              f"{str(detection.__dict__['categories'][0].category_name)}")
+        result_types.update({str(detection.__dict__['categories'][0].score):
+                             detection.__dict__['categories'][0].category_name})
+
+    # Filter the results to only include the highest confidence detections key and value.
+    highest_confidence_detection = result_types[max(result_types.keys())]
+
+    return highest_confidence_detection

@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import Logo from '../assets/images/logo.png';
 
+import { useNavigation } from "@react-navigation/native";
+
 export default function LoginScreen() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigation = useNavigation();
   
     const handleLogin = () => {
       // Implement your login logic here
@@ -30,12 +34,12 @@ export default function LoginScreen() {
           onChangeText={setPassword}
         />
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('UploadScreen')}>
             <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
         <Text style={{top: 80}}>Forgot Password</Text>
         <View style={{borderColor: "black", borderWidth: 1, width: 332, position: "relative", top: 300}}/>
-        <Text style={styles.accountText}>Don't have an account? <TouchableOpacity><Text style={styles.loginText}>Create Account</Text></TouchableOpacity></Text>
+        <Text style={styles.accountText}>Don't have an account? <TouchableOpacity onPress={()=> navigation.navigate('HomeScreen')}><Text style={styles.loginText}>Create Account</Text></TouchableOpacity></Text>
       </View>
     );
   }

@@ -39,7 +39,7 @@ export default function HomeScreen() {
       />
       <Text style={styles.accountText}>
         Already have an account?{" "}
-        <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
+        <TouchableOpacity onPress={()=> navigation.navigate('LoginScreen')}>
           <Text style={styles.loginText}>Log In</Text>
         </TouchableOpacity>
       </Text>

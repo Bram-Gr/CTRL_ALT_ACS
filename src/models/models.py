@@ -1,10 +1,10 @@
 from pathlib import Path
 import pathlib
-import logging
 import sqlite3
 from datetime import datetime
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-WORKING = ROOT / ".idea/data"
+WORKING = ROOT / "data"
 print(f"ROOT: {ROOT}")
 
 # # Define the input values

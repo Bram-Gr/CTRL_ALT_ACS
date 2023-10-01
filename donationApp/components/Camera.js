@@ -3,11 +3,13 @@ import { StyleSheet ,Text, View, Button, Image, TouchableOpacity} from 'react-na
 import { Camera } from 'expo-camera';
 import { useNavigation } from '@react-navigation/native';
 import UploadScreen from './UploadScreen';
+import axios from "axios";
 
 export default function CameraScreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
+  const [imageObj, setImageObj] = useState({});
   const [type, setType] = useState(Camera.Constants.Type.back);
   const navigation = useNavigation();
 
@@ -19,12 +21,47 @@ export default function CameraScreen() {
     })();
   }, []);
 
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  }
+  
+
   const takePicture = async () => {
     if(camera){
-        const data = await camera.takePictureAsync(null)
-        setImage(data.uri);
+        const data = await camera.takePictureAsync(({
+            base64: true
+        }));
+
+        setImage(data.base64);
+
+        let object = {
+            userId: getRandomInt(0,1000),
+            description: "couch",
+            image: image
+        }
+
+        setImageObj(object);
+
+        console.log(imageObj);
+
+        sendUserData();
     }
   }
+
+  const sendUserData = async (userData) => {
+    try {
+      const response = await axios.post('http://10.200.0.100:8000/donations', imageObj, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Data sent successfully: ", response.data);
+    } catch (error) {
+      console.error("Error Sending data:", error);
+    }
+  };
 
   if (hasCameraPermission === false) {
     return <Text>No access to camera</Text>;

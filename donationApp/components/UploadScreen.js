@@ -4,6 +4,7 @@ import Donation from './Donation';
 import { Camera, CameraType } from 'expo-camera';
 import { useNavigation } from '@react-navigation/native';
 import CameraScreen from './Camera';
+import ProfilePic from '../assets/images/user.svg';
 
 export default function UploadScreen() {
 
@@ -59,6 +60,7 @@ export default function UploadScreen() {
             <Text style={styles.greetingText}>Good {greeting},</Text>
             <Text style={styles.nameText}>Nadia!</Text>
             <View style={{width: 80, height: 80, backgroundColor: "#D9D9D9", top: -80, left: 290, borderRadius: 50}}></View>
+            <ProfilePic style={{position: 'absolute', left: 305, top: 15, }}/>
             <View style={{width: 375, 
                           height: 350, 
                           borderBottomLeftRadius: 60, 

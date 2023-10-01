@@ -16,22 +16,21 @@ import {
 } from "firebase/auth";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
-
-const auth = getAuth();
+import UploadScreen from "./UploadScreen";
 
 export default function LoginScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+  const auth = getAuth();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         const userData = {
-          displayName: "Nadia", // Assuming you have displayName
-          email: user.email, // This should not be sent like this
+          username: "Nadia", // Assuming you have displayName
+          password: user.email, // This should not be sent like this
         };
-        console.log(userData);
         sendUserData(userData);
       } else {
         console.log("User is not signed in");
@@ -58,6 +57,7 @@ export default function LoginScreen() {
     try {
       await createUserWithEmailAndPassword(auth, username, password);
       Alert.alert('User signed up successfully!');
+      navigation.navigate(UploadScreen);
     } catch (error) {
       Alert.alert('Error signing up:', error.message);
     }
@@ -68,6 +68,7 @@ export default function LoginScreen() {
       await signInWithEmailAndPassword(auth, username, password);
       Alert.alert('Logged in successfully!');
       // Navigate to your home screen or dashboard here
+      navigation.navigate(UploadScreen);
     } catch (error) {
       Alert.alert('Error logging in:', error.message);
     }

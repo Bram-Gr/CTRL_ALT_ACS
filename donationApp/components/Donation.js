@@ -61,7 +61,7 @@ export default function Donation() {
         <Text style={styles.cardDate}>Expected Delivery:</Text>
         <Text style={[styles.cardDate, {top: 90}]}>{deliveryDate}</Text>
         <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Approved</Text></TouchableOpacity>
-        <TouchableOpacity style={[styles.button, {top: -25, left: 260}]}><Text style={styles.buttonText}>Scheduled</Text></TouchableOpacity>
+        <TouchableOpacity style={[styles.button, {top: -25, left: 255}]}><Text style={styles.buttonText}>Scheduled</Text></TouchableOpacity>
         <TouchableOpacity><Arrow style={{top: -115, left: 340}}/></TouchableOpacity>
       </View>
       <StatusBar style="auto" />
@@ -109,8 +109,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 10,
     top: 10,
-    left: 150,
-    width: 105,
+    left: 140,
+    width: 110,
     shadowColor: 'rgba(0, 0, 0, 0.1)',
     shadowOpacity: 0.8,
     elevation: 6,

@@ -17,6 +17,7 @@ import { getAnalytics } from "firebase/analytics";
 import SignUpScreen from './components/SignUpScreen';
 import ApprovedScreen from './components/ApprovedScreen';
 import LoadingScreen from './components/LoadingScreen';
+import MapScreen from './components/MapScreen';
 
 const firebaseConfig = {
   apiKey: "AIzaSyD_RB0NmhSvprCJK9OM7N0Rxew3yGX_HsQ",
@@ -65,6 +66,10 @@ export default function App() {
         <Stack.Screen
           name="LoadingScreen"
           component={LoadingScreen}
+        />
+        <Stack.Screen
+          name="MapScreen"
+          component={MapScreen}
         />
       </Stack.Navigator>
       <StatusBar style="dark" />

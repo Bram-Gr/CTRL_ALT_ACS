@@ -36,6 +36,12 @@ export default function CameraScreen() {
 
         setImage(data.base64);
 
+        sendUserData();
+    }
+  }
+
+  const sendUserData = async (userData) => {
+    try {
         let object = {
             userId: getRandomInt(0,1000),
             description: "couch",
@@ -45,21 +51,14 @@ export default function CameraScreen() {
         setImageObj(object);
 
         console.log(imageObj);
-
-        sendUserData();
-    }
-  }
-
-  const sendUserData = async (userData) => {
-    try {
-      const response = await axios.post('http://10.200.0.100:8000/donations', imageObj, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log("Data sent successfully: ", response.data);
+        const response = await axios.post('http://10.200.0.100:8000/donations', imageObj, {
+            headers: {
+            "Content-Type": "application/json",
+            },
+        });
+        console.log("Data sent successfully: ", response.data);
     } catch (error) {
-      console.error("Error Sending data:", error);
+        console.error("Error Sending data:", error);
     }
   };
 
@@ -131,7 +130,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: "Roboto Slab",
     fontSize: 20,
-    fontWeight: "400",
     fontStyle: "normal",
     lineHeight: 20,
     color: "#FFFFFF",

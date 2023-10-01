@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: "Roboto Slab",
     fontSize: 16,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     fontStyle: "normal",
     lineHeight: 20,
     color: "black",

@@ -18,7 +18,7 @@ import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import UploadScreen from "./UploadScreen";
 
-export default function LoginScreen() {
+export default function SignUpScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
@@ -92,8 +92,8 @@ export default function LoginScreen() {
           onChangeText={setPassword}
         />
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+        <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
       {/* Add other UI elements as needed */}
     </View>
@@ -137,7 +137,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: "Roboto Slab",
     fontSize: 20,
-    
     fontStyle: "normal",
     lineHeight: 20,
     color: "#FFFFFF",
@@ -158,3 +157,4 @@ const styles = StyleSheet.create({
     top: 3,
   },
 });
+

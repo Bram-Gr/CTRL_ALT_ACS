@@ -103,7 +103,7 @@ export default function UploadScreen() {
     nameText: {
         fontFamily: "Roboto Slab",
         fontSize: 40,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: "#314D89",
         paddingTop: 10
     },
@@ -111,7 +111,7 @@ export default function UploadScreen() {
     uploadText: {
       fontFamily: "Roboto Slab",
       fontSize: 32,
-      fontWeight: "400",
+      
       fontStyle: "normal",
       lineHeight: 40,
       textAlign: "center",
@@ -130,7 +130,7 @@ export default function UploadScreen() {
     buttonText: {
         fontFamily: "Roboto Slab",
         fontSize: 20,
-        fontWeight: "400",
+        
         fontStyle: "normal",
         lineHeight: 20,
         color: "#FFFFFF",
@@ -140,7 +140,7 @@ export default function UploadScreen() {
     donationText: {
       fontFamily: "Roboto Slab",
       fontSize: 24,
-      fontWeight: "400",
+      
       fontStyle: "normal",
       color: "#314D89"
     }

@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import Logo from "../assets/images/logo.png";
 import { useNavigation } from "@react-navigation/native";
+import LoginScreen from "./LoginScreen";
+import SignUpScreen from "./SignUpScreen";
 
 
 export default function HomeScreen() {
@@ -24,7 +26,7 @@ export default function HomeScreen() {
         <Text style={styles.joinText}>
           Join our community of givers and make a difference today!
         </Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate(SignUpScreen)}>
           <Text style={styles.buttonText}>Let's Get Started</Text>
         </TouchableOpacity>
       </View>
@@ -39,7 +41,7 @@ export default function HomeScreen() {
       />
       <Text style={styles.accountText}>
         Already have an account?{" "}
-        <TouchableOpacity onPress={()=> navigation.navigate('LoginScreen')}>
+        <TouchableOpacity onPress={()=> navigation.navigate(LoginScreen)}>
           <Text style={styles.loginText}>Log In</Text>
         </TouchableOpacity>
       </Text>
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto Slab",
     fontSize: 45,
     fontStyle: "normal",
-    fontWeight: 300,
+    // fontWeight: 300,
     lineHeight: 122.49 /* 55.121px */,
   },
 
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
     width: 322,
     fontFamily: "Roboto",
     fontSize: 18,
-    fontWeight: "400",
+    // : "400",
     fontStyle: "normal",
     textAlign: "center",
     color: "#314D89",
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: "Roboto Slab",
     fontSize: 20,
-    fontWeight: "400",
+    // : "400",
     fontStyle: "normal",
     lineHeight: 20,
     color: "#FFFFFF",
@@ -106,13 +108,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "Roboto",
     fontSize: 16,
-    fontWeight: 400,
     top: 325,
   },
 
   loginText: {
     color: "black",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     top: 3,
   },
 });

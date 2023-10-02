@@ -6,12 +6,13 @@ import UploadScreen from './UploadScreen';
 import axios from "axios";
 import LoadingScreen from './LoadingScreen';
 import DeniedScreen from './DeniedScreen';
+import ApprovedScreen from './ApprovedScreen';
 
 export default function CameraScreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
-  const [imageObj, setImageObj] = useState({userId: 0, description: "", image: ""});
+  const [imageObj, setImageObj] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const navigation = useNavigation();
 
@@ -22,7 +23,7 @@ export default function CameraScreen() {
 
     })();
 
-  }, [image]);
+  }, []);
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -38,7 +39,7 @@ export default function CameraScreen() {
         
         setImage(data.base64);
 
-        let temp = await sendUserData();
+        sendUserData();
     }
   }
 
@@ -66,6 +67,7 @@ export default function CameraScreen() {
         if (response.data["false"]) {
           navigation.navigate(LoadingScreen);
         } else {
+          navigation.navigate(ApprovedScreen);
         }
       } else {
       }

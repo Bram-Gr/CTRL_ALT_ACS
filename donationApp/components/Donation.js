@@ -42,12 +42,12 @@ export default function Donation() {
         let today = getCurrentDate();
         setDeliveryDate(today);
     }
-  }, [])
+  })
 
   const getCurrentDate = () => {
     let today = new Date();
-    let month = today.getMonth();
-    let day = today.getDay();
+    let month = today.getMonth() + 1;
+    let day = today.getDay() + 1;
     let year = today.getFullYear();
     return monthMap[month] + ' ' + day + ', ' + year;
     
@@ -56,6 +56,7 @@ export default function Donation() {
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
+        <Image style={{width: 115, height: 115, top: 15, left: 20}} source={{uri: '../assets/images/processed_couch.jpg'}}/>
         <Text style={styles.cardText}>Woman On A Mission Outreach Center</Text>
         <Text style={styles.cardDate}>Expected Delivery:</Text>
         <Text style={[styles.cardDate, {top: 90}]}>{deliveryDate}</Text>

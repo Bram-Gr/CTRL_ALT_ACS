@@ -44,14 +44,15 @@ def changeDonationStatus(status, donationId):
     with sqlite3.connect(db_path) as connn:
         cursor = connn.cursor()
         cursor.execute(
-            "UPDATE table donations_status VALUES (?) WHERE donation_id =?", (status, donationId))
+            "UPDATE table donations_status VALUES (?)\
+            WHERE donation_id =?", (status, donationId))
         connn.commit()
 
 
 def generate_serialized_id(table):
     cursor.execute(f'SELECT COUNT(*) FROM {table}')
     count = cursor.fetchone()[0] + 1  # Get the current count and increment it
-    serialized_id = count  # Create a serialized ID with a prefix and zero-padded integer
+    serialized_id = count  # serialized ID with a prefix and zero-padded int
     return int(serialized_id)
 
 

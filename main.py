@@ -24,6 +24,7 @@ class Manager(pydantic.BaseModel):
     username: str
     password: str
 
+
 class Donation(pydantic.BaseModel):
     userId: int
     description: str

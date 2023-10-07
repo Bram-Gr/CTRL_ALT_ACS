@@ -8,3 +8,9 @@ temp2.jpg
 *.db
 temp.jpg
 __pycache__
+
+
+# Added by cargo
+
+/target
+.DS*

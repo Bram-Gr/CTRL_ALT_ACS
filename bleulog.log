@@ -1,0 +1,22 @@
+15:32:16 [DEBUG] (1) ctrl_alt_hfh: Logger initialized
+15:32:16 [INFO] starting 16 workers
+15:32:16 [INFO] Actix runtime found; starting in Actix runtime
+15:36:27 [INFO] SIGINT received; starting forced shutdown
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [DEBUG] (18) actix_server::accept: paused accepting connections on 127.0.0.1:8080
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] shutting down idle worker
+15:36:27 [INFO] accept thread stopped
